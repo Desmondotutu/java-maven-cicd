@@ -4,15 +4,11 @@ node {
   }
     stage('Compile') {
     def mvn = tool 'DefaultMaven';
-    withSonarQubeEnv() {
       sh "${mvn}/bin/mvn clean compile"
-    }
   }
     stage('Test') {
     def mvn = tool 'DefaultMaven';
-    withSonarQubeEnv() {
       sh "${mvn}/bin/mvn test"
-    }
   }
   stage('SonarQube Analysis') {
     def mvn = tool 'DefaultMaven';
@@ -22,8 +18,6 @@ node {
   }
     stage('Package') {
     def mvn = tool 'DefaultMaven';
-    withSonarQubeEnv() {
       sh "${mvn}/bin/mvn install"
-    }
   }
 }
