@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git url: "https://github.com/Desmondotutu/java-maven-cicd.git"
+                git url: 'https://github.com/Desmondotutu/java-maven-cicd.git'
             }
         }
 
@@ -26,8 +26,8 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarqubeServer10') {
-                    sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=java"
+              withSonarQubeEnv() {
+              sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=java"
                 }
             }
         }
