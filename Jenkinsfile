@@ -10,7 +10,6 @@ node {
       sh "${mvn}/bin/mvn test"
   }
   stage('SonarQube Analysis') {
-    def mvn = tool 'DefaultMaven';
     withSonarQubeEnv(credentialsId: 'sonar-secret', installationName: 'SonarqubeServer10'){
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=java"
     }
