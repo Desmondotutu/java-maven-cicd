@@ -1,10 +1,10 @@
 FROM maven as build
-WORKDIR /src
+WORKDIR /app
 COPY . .
 RUN mvn install
 
 FROM openjdk:11.0
-WORKDIR /src
-COPY --from stage build /src/target/*.jar /src
+WORKDIR /app
+COPY --from stage=build /src/target/desmondo.jar /app
 EXPOSE 8082
-CMD ("java", "-jar", )
+CMD ["java", "-jar", "desmondo.jar"]
