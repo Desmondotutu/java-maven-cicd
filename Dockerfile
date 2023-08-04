@@ -1,5 +1,10 @@
 FROM maven as build
-WORKDIR src
+WORKDIR /src
 COPY . .
+RUN mvn install
 
-FROM build step as --builld
+FROM openjdk:11.0
+WORKDIR /src
+COPY --from stage build /src/target/*.jar /src
+EXPOSE 8082
+CMD ("java", "-jar", )
