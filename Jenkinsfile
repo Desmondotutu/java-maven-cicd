@@ -25,7 +25,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-              withSonarQubeEnv('SonarqubeServer10') {
+              withSonarQubeEnv(installationName: 'SonarqubeServer10') {
               sh "${mvn}/bin/mvn sonar:sonar -Dsonar.token=sonar-secret -Dsonar.projectKey=java"
                 }
             }
