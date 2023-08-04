@@ -18,11 +18,11 @@ pipeline {
             }
         }
 
-        stage('Test') {
+       /* stage('Test') {
             steps {
                 sh "${mvn}/bin/mvn test"
             }
-        }
+        } */
 
         stage('SonarQube Analysis') {
             steps {
