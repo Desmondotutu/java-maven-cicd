@@ -26,7 +26,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-              withSonarQubeEnv() {
+              withSonarQubeEnv('SonarqubeServer10') {
               sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=java"
                 }
             }
