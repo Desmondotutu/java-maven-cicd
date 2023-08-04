@@ -12,7 +12,7 @@ node {
   }
     stage('SonarQube Analysis') {
       withSonarQubeEnv('SonarqubeServer10') {
-      sh "${SCANNER_HOME}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=java"
+      sh "${SCANNER_HOME}/bin/sonar:sonar -Dsonar.projectKey=java"
     }
   }
     stage('Package') {
