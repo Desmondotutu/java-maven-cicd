@@ -1,13 +1,12 @@
 node {
+  def mvn = tool 'maven3';
   stage('SCM') {
     checkout scm
   }
     stage('Compile') {
-    def mvn = tool 'DefaultMaven';
       sh "${mvn}/bin/mvn clean compile"
   }
     stage('Test') {
-    def mvn = tool 'DefaultMaven';
       sh "${mvn}/bin/mvn test"
   }
   stage('SonarQube Analysis') {
@@ -17,7 +16,6 @@ node {
     }
   }
     stage('Package') {
-    def mvn = tool 'DefaultMaven';
       sh "${mvn}/bin/mvn install"
   }
 }
