@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git url: 'https://github.com/Desmondotutu/java-maven-cicd.git'
+                checkout scm
             }
         }
 
