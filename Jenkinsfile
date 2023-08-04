@@ -1,5 +1,6 @@
 node {
   def mvn = tool 'maven3';
+  def jdk = tool 'jdk';
   stage('SCM') {
     checkout scm
   }
