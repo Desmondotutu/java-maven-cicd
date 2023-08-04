@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         mvn = tool 'maven3'
-        SCANNER_HOME = tool 'SonarQubeScanner5.0'
     }
 
     stages {
@@ -27,7 +26,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
               withSonarQubeEnv(credentialsId: 'sonar-secret', installationName: 'SonarqubeServer10') {
-              sh "${SCANNER_HOME}/bin/sonar:sonar -Dsonar.projectKey=java"
+              sh "${mvn}/bin/sonar:sonar -Dsonar.projectKey=java"
                 }
             }
         }
