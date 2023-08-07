@@ -5,19 +5,19 @@ pipeline {
     }
 
     stages {
-        stage('Compile') {
+        stage('Code Compile') {
             steps {
                 sh "${mvn}/bin/mvn clean compile"
             }
         }
 
-       /* stage('Test') {
+       /* stage('Code Unit Test') {
             steps {
                 sh "${mvn}/bin/mvn test"
             }
         } */
 
-        stage('SonarQube Analysis') {
+        stage('SonarQube Static Code Analysis') {
             steps {
               withSonarQubeEnv(installationName: 'SonarqubeServer10') {
               sh "${mvn}/bin/mvn sonar:sonar -Dsonar.token=sonar-secret -Dsonar.projectKey=java"
@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-        stage('Package') {
+        stage('Code Package') {
             steps {
                 sh "${mvn}/bin/mvn install"
             }
