@@ -5,10 +5,11 @@ pipeline {
     }
 
     stages {
-        stage('SCM') {
+        stage("Cleanup Workspace"){
             steps {
-                checkout scm
+                cleanWs()
             }
+
         }
 
         stage('Compile') {
