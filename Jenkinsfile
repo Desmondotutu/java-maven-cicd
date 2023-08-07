@@ -5,18 +5,6 @@ pipeline {
     }
 
     stages {
-        stage("Cleanup Workspace"){
-            steps {
-                cleanWs()
-            }
-
-        }
-        stage("Checkout from SCM") {
-            steps {
-                checkout SCM
-            }
-        }
-
         stage('Compile') {
             steps {
                 sh "${mvn}/bin/mvn clean compile"
