@@ -11,11 +11,11 @@ pipeline {
             }
         }
 
-       /* stage('Code Unit Test') {
+       stage('Code Unit Test') {
             steps {
                 sh "${mvn}/bin/mvn test"
             }
-        } */
+        }
 
         stage('SonarQube Static Code Analysis') {
             steps {
